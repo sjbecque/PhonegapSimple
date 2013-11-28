@@ -3,13 +3,34 @@
 <head>
   <title>Phonegap Simple</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="http://10.2.0.58:8080/target/target-script-min.js#anonymous"></script>
+	<script src="/js/cordova.js"></script>
 </head>
 
 <body>
-  <div>Phonegap Simple</div>
-
-  <script>
-
-  </script>
+  <div id="div1">Phonegap Simple x10</div>
+  <p id="p1">x<p>
 </body>
 </html>
+
+<script type="text/javascript">
+	function sayswho(){
+    	var ua= navigator.userAgent, 
+	    N= navigator.appName, tem, 
+	    M= ua.match(/(opera|chrome|safari|firefox|msie|trident)\/?\s*([\d\.]+)/i) || [];
+    	M= M[2]? [M[1], M[2]]:[N, navigator.appVersion, '-?'];
+    	if(M && (tem= ua.match(/version\/([\.\d]+)/i))!= null) M[2]= tem[1];
+	    return M.join(' ');
+	}
+	
+	window.onerror = function myErrorHandler(errorMsg, url, lineNumber) {
+		document.getElementById('div1').innerHTML += "<p>error: " + errorMsg + "</p>";
+		return false; 
+	}
+
+  	window.onload=function(){
+		document.getElementById('p1').innerHTML = "version: " + sayswho()
+	}	
+
+  
+</script>
